@@ -1,0 +1,308 @@
+.details-container {
+  & .step-1 {
+    & label {
+      font-size: .8em;
+      color: var(--b950);
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      gap: 1.2em;
+    }
+
+    & .error-message {
+      color: var(--r500);
+      text-align: right;
+    }
+
+    & input {
+      display: block;
+      width: 100%;
+      padding: .6em;
+      font-size: 1rem;
+      font-family: 'Ubuntu', system-ui;
+      font-weight: 500;
+      border-radius: .4em;
+      border: solid 1px var(--g500);
+      color: var(--b950);
+      margin-top: .2em;
+      cursor: pointer;
+      outline: none;
+    }
+
+    & input:not(input:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+/* Step 2 */
+
+.details-container {
+  & .step-2 {
+    display: flex;
+    flex-direction: column;
+    & .plan {
+      display: flex;
+      padding: .8em;
+      gap: 1em;
+      border: solid 1px var(--g500);
+      margin-bottom: .8em;
+      border-radius: .8em;
+      cursor: pointer;
+
+      & .plan-name {
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--b950);
+        margin-bottom: .3em;
+      }
+
+      & .plan-price {
+        color: var(--g500);
+        font-size: .95rem;
+      }
+    }
+
+    & .plan-select {
+      border-color: var(--p600);
+      background-color: var(--b100);
+    }
+
+    & .toggle-switch-container {
+      background-color: var(--b100);
+      border-radius: .5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1em 0;
+      font-weight: 500;
+      color: var(--g500);
+      font-size: .9rem;
+      gap: 1em;
+
+      & .selected {
+        color: var(--b950);
+      }
+
+      & .toggle-switch {
+        width: 3em;
+        height: 1.5em;
+        background-color: var(--b950);
+        border-radius: 2em;
+        position: relative;
+        cursor: pointer;
+
+        & .toggle-ball {
+          position: absolute;
+          top: .25rem;
+          bottom: .25rem;
+          background-color: var(--w);
+          width: .9rem;
+          left: .25rem;
+          border-radius: 2em;
+        }
+      }
+    }
+  }
+}
+
+/* Step 3 */
+
+.details-container {
+  & .step-3 {
+
+    .add-on {
+      padding: 1rem;
+      border: 1px solid var(--g500);
+      border-radius: .6em;
+    }
+
+    .add-on:not(.add-on:last-child) {
+      margin-bottom: 1em;
+    }
+  
+    .check {
+      display: flex;
+      gap: 1em;
+    }
+
+    label {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    & .active {
+      border-color: var(--p600);
+      background-color: var(--b100);
+    }
+
+    input{
+      appearance: none;
+      min-width: 1.3rem;
+      height: 1.3rem;
+      border: 1px solid var(--g500);
+      border-radius: .3em;
+      position: relative;
+      margin: auto 0;
+      cursor: pointer;
+    }
+
+    & input:checked {
+      background-color: var(--p600);
+      border-color: var(--p600);
+    }
+
+    & input:checked::after {
+      content: url(../../assets/images/icon-checkmark.svg);
+      position: absolute;
+      right: 20%;
+      top: 12.5%;
+    }
+
+    & .addon-details {
+      & .add-on-name {
+        color: var(--b950);
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: .1em;
+      }
+
+      & .add-on-desc {
+        color: var(--g500);
+        font-size: .8rem;
+      }
+    }
+
+    .add-on-price {
+      font-size: .8em;
+      color: var(--p600);
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+  }
+}
+
+/* Step 4 */
+
+.details-container {
+  .step-4 {
+    & .plan-container {
+      background-color: var(--b100);
+      padding: 1.4em 1em;
+      border-radius: .8em;
+      margin-bottom: 1em;
+    }
+
+    & .plan-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+
+    & .plan-name p{
+      color: var(--b950);
+      font-weight: 700;
+    }
+
+    & .plan-name a {
+      font-size: .9rem;
+      color: var(--g500);
+      text-decoration: underline 1.2px;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--p600);
+      }
+    }
+
+    & .plan-price {
+      color: var(--b950);
+      font-weight: 700;
+    }
+
+    & hr {
+      border-color: var(--g500);
+      border-top: none;
+      margin: 0;
+      opacity: .4;
+      margin-bottom: 1em;
+    }
+
+    & .addon {
+      display: flex;
+      justify-content: space-between;
+
+      & .addon-name {
+        color: var(--g500);
+      }
+
+      & .addon-price {
+        color: var(--b950);
+      }
+    }
+
+    & .addon:not(.addon:last-child) {
+      margin-bottom: 1em;
+    }
+
+    & .total-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 1em;
+      gap: .4em;
+
+       & p:not(& .total-price) {
+        color: var(--g500);
+       }
+
+       & .total-price {
+        color: var(--p600);
+        font-weight: 700;
+       }
+    }
+  }
+}
+
+.action-btns .last {
+  background-color: var(--p600);
+}
+
+.action-btns .first {
+  display: none;
+}
+
+.step-5 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+
+  & h2 {
+    font-size: 1.7rem;
+    color: var(--b950);
+    margin: .8em;
+  }
+
+  p {
+    color: var(--g500);
+    text-align: center;
+    line-height: 1.8em;
+    max-width: 440px;
+  }
+
+  & img {
+    height: 4em;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

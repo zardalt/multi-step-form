@@ -68,16 +68,15 @@ interface ISavedValues {
 }
 
 class switchBetweenPages {
-  step1: HTMLButtonElement = document.querySelector('.js-step1-btn')!;
-  step2: HTMLButtonElement = document.querySelector('.js-step2-btn')!;
-  step3: HTMLButtonElement = document.querySelector('.js-step3-btn')!;
-  step4: HTMLButtonElement = document.querySelector('.js-step4-btn')!;
-  stepContainer: HTMLDivElement = document.querySelector('.switch-step')!;
-  currentStep: number = 4;
-  addOnSelected: string = 'arcade';
-  steps: HTMLButtonElement[] = [this.step1, this.step2, this.step3, this.step4];
-  allSteps: NodeListOf<HTMLDivElement> = document.querySelectorAll('.step'); 
-  colorVariables = {
+  private step1: HTMLButtonElement = document.querySelector('.js-step1-btn')!;
+  private step2: HTMLButtonElement = document.querySelector('.js-step2-btn')!;
+  private step3: HTMLButtonElement = document.querySelector('.js-step3-btn')!;
+  private step4: HTMLButtonElement = document.querySelector('.js-step4-btn')!;
+  private stepContainer: HTMLDivElement = document.querySelector('.switch-step')!;
+  private currentStep: number = 4;
+  private steps: HTMLButtonElement[] = [this.step1, this.step2, this.step3, this.step4];
+  private allSteps: NodeListOf<HTMLDivElement> = document.querySelectorAll('.step'); 
+  private colorVariables = {
     b950: 'hsl(213, 96%, 18%)',
     p600: 'hsl(243, 100%, 62%)',
     b300: 'hsl(228, 100%, 84%)',
@@ -90,8 +89,8 @@ class switchBetweenPages {
     b50: 'hsl(231, 100%, 99%)',
     w: 'hsl(0, 100%, 100%)'
   }
-  validPages: number = 1;
-  savedValues: ISavedValues = {
+  private validPages: number = 1;
+  private savedValues: ISavedValues = {
     step1: {
       name: '',
       email: '',
@@ -106,56 +105,34 @@ class switchBetweenPages {
       addons: []
     }
   }
-  prevStep!: number; 
+  private prevStep!: number; 
 
   constructor () {
     this.constructorCode();
   }
 
-  constructorCode = async () => {
+  private constructorCode = async () => {
     this.addNavEvents();
     await this.switchPages();
     this.checkForActiveAddons();
   }
 
-  stepCode = async (stepToGo: number): Promise<string | undefined> => {
+  private stepCode = async (stepToGo: number): Promise<string | undefined> => {
     if (stepToGo !== this.currentStep) {
-      if (stepToGo === 1) {
-        const f = await this.fetchHTML(1)
+        const f = await this.fetchHTML(stepToGo)
         return f;
-      } else if (stepToGo === 2) {
-        const f = await this.fetchHTML(2).then(response => {
-          return response;
-        })
-        return f;
-      } else if (stepToGo === 3) {
-        const f = await this.fetchHTML(3).then(response => {
-          return response;
-        })
-        return f;
-      } else if (stepToGo === 4) {
-        const f = await this.fetchHTML(4).then(response => {
-          return response;
-        })
-        return f;
-      } else if (stepToGo === 5) {
-        const f = await this.fetchHTML(5).then(response => {
-          return response;
-        })
-        return f;
-      }
     }
   }
 
-  fetchHTML = (stepToGo: number) => {
-    const f: Promise<string> = fetch(`../build/steps-code/step${stepToGo}.txt`).then(res => {
+  private fetchHTML = (stepToGo: number) => {
+    const f: Promise<string> = fetch(`steps-code/step${stepToGo}.txt`).then(res => {
       return res.text();
     })
 
     return f;
   }
 
-  switchPages = async (step: number = 1) => {
+  private switchPages = async (step: number = 1) => {
     // this.transition('out')
       this.slideOut('start', step);
       this.stepContainer.innerHTML = await this.stepCode(step) ?? 'Please refresh page';
@@ -171,7 +148,7 @@ class switchBetweenPages {
     if (this.currentStep === 5) this.currentStep = 6;
   }
 
-  updateSavedValues = (step: number) => {
+  private updateSavedValues = (step: number) => {
     if (step === 1) {
       const stepOneInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.step-1 input');
       const o = this.savedValues.step1;
@@ -198,7 +175,7 @@ class switchBetweenPages {
     }
   }
 
-  switchSteps = (): void => {
+  private switchSteps = (): void => {
     if (this.currentStep === 1) {
       if (this.checkRequiredContents()) {
         this.switchPages(2);
@@ -213,7 +190,7 @@ class switchBetweenPages {
     this.selectValidNav();
   }
 
-  updatePrevBtn = () => {
+  private updatePrevBtn = () => {
     const previousBtn: HTMLAnchorElement | null =  document.querySelector('.previous');
     if (this.currentStep === 1) {
       if (previousBtn)
@@ -221,7 +198,7 @@ class switchBetweenPages {
     } else if (previousBtn) previousBtn.style.display = "block";
   }
 
-  updateNextBtn = () => {
+  private updateNextBtn = () => {
     const nextBtn: HTMLButtonElement = document.querySelector('.action-btns .next')!;
     if (this.currentStep === 4) {
       nextBtn.innerHTML = 'Confirm'
@@ -232,7 +209,7 @@ class switchBetweenPages {
     }
   }
 
-  addNavEvents = (): void => {
+  private addNavEvents = (): void => {
     const nextBtn: HTMLButtonElement = document.querySelector('.action-btns .next')!;
     const previousBtn: HTMLAnchorElement | null =  document.querySelector('.previous');
     this.steps.forEach((stepBtn, index) => {
@@ -249,7 +226,7 @@ class switchBetweenPages {
     })
   }
 
-  changeHeaders = (goToStep: number): void => {
+  private changeHeaders = (goToStep: number): void => {
     const mainHeader: HTMLHeadingElement | null = document.querySelector('h1');
     const subHeader: HTMLHeadingElement | null = document.querySelector('h4');
     const actionBtns: HTMLButtonElement | null = document.querySelector('.action-btns');
@@ -282,14 +259,14 @@ class switchBetweenPages {
     }
   }
 
-  changeActiveElement = (): void => {
+  private changeActiveElement = (): void => {
         this.allSteps.forEach(step => {
           step.classList.remove('active');
         })
         this.allSteps[this.currentStep - 1]?.classList.add('active');
   }
 
-  addActiveStates(): void {
+  private addActiveStates(): void {
     if (this.currentStep === 1) {
       const stepOneInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.step-1 input');
 
@@ -314,7 +291,7 @@ class switchBetweenPages {
     }
   }
 
-  checkRequiredContents = (): boolean => {
+  private checkRequiredContents = (): boolean => {
     let noError: boolean = true;
     interface Error {
       [key: string]: IErrorMessage
@@ -427,7 +404,7 @@ class switchBetweenPages {
     return noError;
   }
 
-  checkForError = (type: string, value: string): IErrorMessage => {
+  private checkForError = (type: string, value: string): IErrorMessage => {
     const returnValue: IErrorMessage = {
       error: false,
       errorMessage: ''
@@ -466,7 +443,7 @@ class switchBetweenPages {
     return returnValue;
   }
 
-  switchPlansEvent = () => {
+  private switchPlansEvent = () => {
     const plans: NodeListOf<HTMLDivElement> = document.querySelectorAll('.plan');
     plans.forEach((plan, index) => {
       const planTitle: string = plan.dataset.plan!;
@@ -480,7 +457,7 @@ class switchBetweenPages {
     this.toggleCycle();
   }
 
-  toggleCycle = () => {
+  private toggleCycle = () => {
     const cycleSwitch: HTMLDivElement = document.querySelector('.toggle-switch')!;
     const cycleBall: HTMLDivElement = document.querySelector('.toggle-ball')!;
 
@@ -507,7 +484,7 @@ class switchBetweenPages {
     })
   }
 
-  animateBallMovement = (direction: 'right' | 'left' | 'increase' | 'decrease' | 'show') => {
+  private animateBallMovement = (direction: 'right' | 'left' | 'increase' | 'decrease' | 'show') => {
     const cycleBall: HTMLDivElement = document.querySelector('.toggle-ball')!;
     let leftValue: string = '.25';
     let rightValue: string = 'unset';
@@ -606,7 +583,7 @@ class switchBetweenPages {
     }
   }
 
-  getDir(dir: string, prop: 'left' | 'right', w: 'from' | 'to'): string {
+  private getDir(dir: string, prop: 'left' | 'right', w: 'from' | 'to'): string {
       let returnValue: string = ''
       if (dir === 'left') {
         if (prop === 'left') {
@@ -632,7 +609,7 @@ class switchBetweenPages {
       return returnValue;
     }
 
-  switchCycle = () => {
+  private switchCycle = () => {
     const cyclePara: NodeListOf<HTMLParagraphElement> = document.querySelectorAll('.toggle-switch-container p');
     cyclePara.forEach(p => {p.classList.remove('selected')})
     if (this.savedValues.step2!.cycle === billingCycle.Monthly) {
@@ -640,7 +617,7 @@ class switchBetweenPages {
     } else cyclePara[1]?.classList.add('selected')
   }
 
-  updatePlanInfo = () => {
+  private updatePlanInfo = () => {
     const num: NodeListOf<HTMLSpanElement> = document.querySelectorAll('.plan .num');
     const planSpan: NodeListOf<HTMLSpanElement> = document.querySelectorAll('.plan .plan-span');
     const currentPlanCycle = this.savedValues.step2!.cycle;
@@ -659,7 +636,7 @@ class switchBetweenPages {
     }
   }
 
-  checkForActiveAddons = () => {
+  private checkForActiveAddons = () => {
     const checkBoxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.add-on input');
     const checkBoxesDiv: NodeListOf<HTMLDivElement> = document.querySelectorAll('.add-on');
     const checkBoxesLabel: NodeListOf<HTMLLabelElement> = document.querySelectorAll('.add-on label');
@@ -673,7 +650,7 @@ class switchBetweenPages {
     })
   }
 
-  addClickEventStep3 = (checkBoxesDiv: NodeListOf<HTMLDivElement>, checkBoxes: NodeListOf<HTMLInputElement>) => {
+  private addClickEventStep3 = (checkBoxesDiv: NodeListOf<HTMLDivElement>, checkBoxes: NodeListOf<HTMLInputElement>) => {
     checkBoxesDiv.forEach(ch => { ch.classList.remove('active') });
     const newObj: string[] = [];
     checkBoxes.forEach((ch, index) => {
@@ -688,7 +665,7 @@ class switchBetweenPages {
     }
   }
 
-  recallClickedAddons = () => {
+  private recallClickedAddons = () => {
     const checkBoxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.add-on input');
     const checkBoxesDiv: NodeListOf<HTMLDivElement> = document.querySelectorAll('.add-on');
     const a = this.savedValues!.step3!.addons;
@@ -706,7 +683,7 @@ class switchBetweenPages {
     this.addClickEventStep3(checkBoxesDiv, checkBoxes);
   }
 
-  updateAddonPrice = () => {
+  private updateAddonPrice = () => {
     const num: NodeListOf<HTMLSpanElement> = document.querySelectorAll('.step-3 .num');
     const length: NodeListOf<HTMLSpanElement> = document.querySelectorAll('.step-3 .length');
     const cycle = this.savedValues.step2!.cycle;
@@ -726,7 +703,7 @@ class switchBetweenPages {
     
   }
 
-  updatePaymentSummary = () => {
+  private updatePaymentSummary = () => {
     const savedCycle = this.savedValues!.step2!.cycle;
     let billingCycle!: IBillingCycleObj;
     if (typeof savedCycle === 'string' && billingDetails[savedCycle]) {
@@ -759,7 +736,7 @@ class switchBetweenPages {
     selectedTime.innerHTML = billingCycle.abbr.normal;
   }
 
-  createAddons = (): [string, any] => {
+  private createAddons = (): [string, any] => {
     let htmlCode: string = '';
     let totalAddonPrice = 0;
     if (typeof this.savedValues!.step3!.addons === 'object')
@@ -795,12 +772,12 @@ class switchBetweenPages {
     return [htmlCode, totalAddonPrice];
   }
 
-  isUpperCase = (letter: string): boolean => {
+  private isUpperCase = (letter: string): boolean => {
     const code = letter.charCodeAt(0);
     return code >= 65 && code <= 90
   }
 
-  calculateTotalPrice = () => {
+  private calculateTotalPrice = () => {
     let totalPrice: any = 0
     let cycle!: string;
     if (typeof this.savedValues!.step2!.cycle === 'string') 
@@ -816,13 +793,13 @@ class switchBetweenPages {
     document.querySelector('.step-4 .total-num')!.innerHTML = totalPrice;
   }
 
-  addAnchorEvent = () => {
+  private addAnchorEvent = () => {
     document.querySelector('.step-4 a')?.addEventListener('click', () => {
       this.switchPages(2);
     })
   }
 
-  selectValidNav = () => {
+  private selectValidNav = () => {
     for (let i = 0; i < this.validPages + 1; i++) {
       document.querySelector(`.js-step${i}-btn`)?.classList.remove('invalid');
     }
@@ -834,7 +811,7 @@ class switchBetweenPages {
     }
   }
 
-  transition = (dir: string) => {
+  private transition = (dir: string) => {
     if (dir === 'out') {
       document.querySelector('.details-container')?.animate(
       [
@@ -864,10 +841,9 @@ class switchBetweenPages {
     }
   }
 
-  slideOut = (time: string, step: number) => {
+  private slideOut = (time: string, step: number) => {
     const slidingCon: HTMLDivElement | null = document.querySelector('.transition-container');
     const det: HTMLDivElement | null = document.querySelector('.details-container');
-    console.log(step, this.prevStep);
 
     if (time === 'start' && step > 1) {
       this.prevStep = this.currentStep;

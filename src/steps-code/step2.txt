@@ -1,0 +1,37 @@
+<div class = "step-2">
+  <div class = "grid-container">
+    <div data-plan = "arcade" class = "plan plan-select">
+      <img src = "../assets/images/icon-arcade.svg" alt = "arcade icon" loading = "eager" decoding = "async">
+
+      <div class = "plan-details">
+        <p class = "plan-name">Arcade</p>
+        <p class = "plan-price">$<span class = "num">9</span>/<span class = "plan-span">mo</span></p>
+      </div>
+    </div>
+
+    <div data-plan = "advanced" class = "plan">
+      <img src = "../assets/images/icon-advanced.svg" alt = "arcade icon" loading = "eager" decoding = "async">
+      <div class = "plan-details">
+        <p class = "plan-name">Advanced</p>
+        <p class = "plan-price">$<span class = "num">12</span>/<span class = "plan-span">mo</span></p>
+      </div>
+    </div>
+
+    <div data-plan = "pro" class = "plan">
+      <img src = "../assets/images/icon-pro.svg" alt = "arcade icon" loading = "eager" decoding = "async">
+
+      <div class = "plan-details">
+        <p class = "plan-name">Pro</p>
+        <p class = "plan-price">$<span class = "num">15</span>/<span class = "plan-span">mo</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class = "toggle-switch-container">
+    <p class = "selected">Monthly</p>
+    <div class = "toggle-switch">
+      <div class = "toggle-ball"></div>
+    </div>
+    <p>Yearly</p>
+  </div>
+</div>

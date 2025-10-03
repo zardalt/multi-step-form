@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+
+  <link rel = "stylesheet" href = "styles/styles.css">
+
+  <link rel = "stylesheet" href = "styles/steps.css">
+  <link rel = "stylesheet" href = "styles/media.css">
+  
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <script src = "../build/js/main.js" type = "module" defer></script>
+</head>
+<body>
+  <main>
+    <div class = "form">
+      <div class = "nav">
+        <nav>
+          <div class = "step active">
+            <div class = "btn">
+              <button class = "js-step1-btn">1</button>
+            </div>
+            <div class = "content">
+              <p class = "step-no">STEP 1</p>
+              <p class = "step-title">YOUR INFO</p>
+            </div>
+          </div>
+          <div class = "step">
+            <div class = "btn">
+              <button class = "js-step2-btn invalid">2</button>
+            </div>
+            <div class = "content">
+              <p class = "step-no">STEP 2</p>
+              <p class = "step-title">SELECT PLAN</p>
+            </div>
+          </div>
+          <div class = "step">
+            <div class = "btn">
+              <button class = "js-step3-btn invalid">3</button>
+            </div>
+            <div class = "content">
+              <p class = "step-no">STEP 3</p>
+              <p class = "step-title">ADD-ONS</p>
+            </div>
+          </div>
+          <div class = "step">
+            <div class = "btn">
+              <button class = "js-step4-btn invalid">4</button>
+            </div>
+            <div class = "content">
+              <p class = "step-no">STEP 4</p>
+              <p class = "step-title">SUMMARY</p>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class = "details-container">
+        <div>
+          <h1>---------------</h1>
+          <h4>--------------------------------------------------------</h4>
+        </div>
+        
+        <div class = "switch-step">
+        </div>
+        <div class = "action-btns">
+          <div>
+            <a class = "previous">Go back</a>
+          </div>
+          <button class = "next">Next Step</button>
+        </div>
+
+
+        <div class = "transition-container" aria-hidden="true">
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

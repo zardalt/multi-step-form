@@ -1,0 +1,24 @@
+<div class = "step-4">
+  <div class = "plan-container">
+    <div class = "plan-details">
+      <div class = "plan-name">
+        <p><span class = "plan">Arcade</span> (<span class = "plan-span-full">Monthly</span>)</p>
+        <a>Change</a>
+      </div>
+      <div class = "plan-price">
+        <p>$<span class = "num">9</span>/<span class = "plan-span">mo</span></p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class = "addons">
+    </div>
+  </div>
+
+  <div class = "total-container">
+    <p>Total (per 
+      <span class = "selected-time">month</span>)
+    </p>
+    <p class = "total-price">+$<span class = "total-num">12</span>/<span class = "plan-span">mo</span></p>
+  </div>

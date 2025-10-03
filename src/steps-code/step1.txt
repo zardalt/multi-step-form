@@ -1,0 +1,21 @@
+<div class = "step-1">
+  <form>
+    <label for = "name" class = "js-label-name">
+    <p class = "label-name">Name</p>
+    <p class = "error-message"></p>
+    </label>
+    <input type = 'text' autocomplete = "name" id = "name" name = "name" placeholder="e.g. Stephen King" class = "js-name" required>
+
+    <label for = "email" class = "js-label-email">
+    <p class = "label-name">Email Address</p>
+    <p class = "error-message"></p>
+    </label>
+    <input type = 'email' autocomplete = "email" id = "email" name = "email" placeholder="e.g. stephenking@mail.com" class = "js-email" required>
+
+    <label for = "phone" class = "js-label-phone">
+    <p class = "label-name">Phone Number</p>
+    <p class = "error-message"></p>
+    </label>
+    <input type="tel" autocomplete = "tel" id = "phone" name = "phone" placeholder="e.g. +1 234 567 890" class = "js-phone" required>
+  </form>
+</div>

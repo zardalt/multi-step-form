@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(../../assets/fonts/Ubuntu-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(../../assets/fonts/Ubuntu-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(../../assets/fonts/Ubuntu-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --b950: hsl(213, 96%, 18%);
+  --p600: hsl(243, 100%, 62%);
+  --b300: hsl(228, 100%, 84%);
+  --b200: hsl(206, 94%, 87%);
+  --r500: hsl(354, 84%, 57%);
+
+  --g500: hsl(231, 11%, 63%);
+  --p200: hsl(229, 24%, 87%);
+  --b100: hsl(218, 100%, 97%);
+  --b50: hsl(231, 100%, 99%);
+  --w: hsl(0, 100%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Ubuntu', system-ui;
+  font-size: 16px;
+}
+
+body,
+p,
+h1,
+h4 {
+  margin: 0;
+}
+
+body {
+  background-color: var(--b100);
+  position: relative;
+  padding-bottom: 6em;
+}
+
+.content {
+  display: none;
+}
+
+.form {
+  background: url(../../assets/images/bg-sidebar-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @media (width > 777px) {
+    background-size: cover;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  gap: 1em;
+  
+
+  & button {
+    block-size: 2.5em;
+    inline-size: 2.5em;
+    font-family: 'Ubuntu', system-ui;
+    color: var(--w);
+    background: transparent;
+    border: solid 2px var(--w);
+    border-radius: 2em;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  & .invalid {
+    opacity: .6;
+    cursor:default;
+  }
+
+  & .active {
+
+    & button {
+      background-color: var(--b200);
+      border-color: var(--b200);
+      color: var(--b950);
+    }
+  }
+}
+
+.details-container {
+  background-color: var(--w);
+  width: 90%;
+  margin: 0 auto;
+  padding: 2em 1.4em;
+  border-radius: .6em;
+  container-name: con;
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+
+  & h1 {
+    font-size: 1.6rem;
+    color: var(--b950);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  & h4 {
+    color: var(--g500);
+    font-weight: 400;
+    line-height: 1.5em;
+    margin-bottom: 1rem;
+  }
+}
+
+.action-btns {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--w);
+  right: 0;
+  left: 0;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & button {
+    border-radius: .4em;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Ubuntu', system-ui;
+    border: none;
+    cursor: pointer;
+    transition: opacity .15s;
+
+    &:hover {
+      opacity: .9;
+    }
+
+    &:active {
+      opacity: .8;
+    }
+  }
+
+  & .next {
+    background-color: var(--b950);
+    color: var(--b50);
+    padding: .8em 1em;
+  }
+
+  & .previous {
+    color: var(--g500);
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Ubuntu', system-ui;
+    cursor: pointer;
+  }
+}
+
+.no-dis {
+  display: none;
+}
+
+@container con (width > 400px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2em;
+    margin-bottom: 1em;
+    align-self: center;
+
+    & .plan {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 8em;
+
+      img {
+        height: 2.5rem;
+        margin-bottom: 2em;
+      }
+    }
+  }
+}
+
+.transition-container {
+  position: absolute;
+  background-color: white;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--w);
+  padding: 2em 1.4em;
+  border-radius: .6em;
+  display: none;
+}

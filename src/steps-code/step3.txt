@@ -1,0 +1,47 @@
+<div class = "step-3">
+  <div class = "add-on">
+    <div class = "check">
+        <input id = "online" type = "checkbox" data-addOn = "onlineService" data-price = "1">
+      <label for = "online">
+        <div class = "addon-details">
+          <p class = "add-on-name">Online service</p>
+          <p class = "add-on-desc">Access to multiplayer games</p>
+        </div>
+        <div class = "add-on-price">
+          <p>+$<span class = "num">1</span>/<span class = "length">mo</span></p>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class = "add-on">
+    <div class = "check">
+      <input id = "larger" type = "checkbox" data-addOn = "largerStorage" data-price = "2">
+      <label for = "larger">
+        <div class = "addon-details">
+          <p class = "add-on-name">Larger storage</p>
+          <p class = "add-on-desc">Extra 1TB of cloud save</p>
+        </div>
+        <div class = "add-on-price">
+          <p>+$<span class = "num">2</span>/<span class = "length">mo</span></p>
+        </div>
+      </label>
+    </div>
+  </div>
+  
+  <div class = "add-on">
+    <div class = "check">
+      <input id = "customizable" type = "checkbox" data-addOn = "customizableProfile" data-price = "2">
+      <label for = "customizable">
+        <div class = "addon-details">
+          <p class = "add-on-name">Customizable profile</p>
+          <p class = "add-on-desc">Custom theme on your profile</p>
+        </div>
+        <div class = "add-on-price">
+          <p>+$<span class = "num">2</span>/<span class = "length">mo</span></p>
+        </div>
+      </label>
+    </div>
+  </div>
+
+</div>
